@@ -1,0 +1,142 @@
+
+
+
+  <script id="task-template" type="text/x-handlebars-template">
+	 <li class="list-group-item clearfix" id="{{id}}"> 
+	     <p class="lead">{{title}}</p>
+	     <div>
+		   <span class="pull-left">
+  		    {{#if duedate.expired}}
+				<span class="glyphicon glyphicon-alert text-danger"></span> 
+			{{else}}
+				<span class="glyphicon glyphicon-time"></span> 
+			{{/if}}
+	        <span>{{duedate.str}}</span>
+           </span>
+	       <span class="pull-right">
+  				{{#if config.commandEdit}}
+	              <button class="btn btn-default btn-xs" data-command="edit"><span class="glyphicon glyphicon-pencil"></span></button>
+	            {{/if}}
+  				{{#if config.commandCopy}}
+	              <button class="btn btn-default btn-xs" data-command="copy"><span class="glyphicon glyphicon-duplicate"></span></button>
+	            {{/if}}
+ 				{{#if config.targetArchiv}}
+				  <button class="btn btn-success btn-xs" data-target="archiv"><span class="glyphicon glyphicon-ok"></span></button>
+	            {{/if}}
+	            {{#if config.targetTrash}}
+				  <button class="btn btn-danger btn-xs" data-target="trash"><span class="glyphicon glyphicon-remove"></span></button>
+	            {{/if}}
+	       </span>
+        </div>
+	 </li>
+  </script>  
+
+
+	    <div class="row">
+	      <div id="jumbotron" class="col-md-offset-3 col-md-6">
+	        <img src="whatsapp-interface-1660652_1280.png" class="img-responsive img-center"/>
+	      </div>
+	    </div>
+	  
+	    <div class="row">
+	      <div class="col-md-offset-2 col-md-8">
+	        <div class="input-group stylish-input-group">
+	                <input type="text" class="form-control" id="addtask" placeholder="Add new task" >
+	                <span class="input-group-addon">
+	                        <button><span class="glyphicon glyphicon-plus-sign"></span></button>
+	                  </span>
+	          </div>
+	      </div>
+	    </div>
+	    
+	    
+	    <div class="row">
+	      <div class="col-md-offset-2 col-md-8">
+	       <ul class="list-group" id="tasklist" data-list="{list}">
+	     
+           </ul>
+	      </div>
+	    </div>
+     
+     
+               
+     
+     <div class="modal" tabindex="-1" role="dialog" id="editor">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title">Edit</h4>
+          </div>
+	      <div class="modal-body">
+			      <form>
+			            <input type="hidden" name="id" />
+			            <div class="form-group">
+			  				<label for="title">Title:</label>
+			  				<input type="text" class="form-control" id="title" name="title" />
+						</div>
+						<div class="form-group">
+			                <label for="datetimepicker">DueDate:</label>
+			                <div class='input-group date datetimepicker'>
+			                    <input type='text' class="form-control" name="date" />
+			                    <span class="input-group-addon">
+			                        <span class="glyphicon glyphicon-calendar"></span>
+			                    </span>
+			                </div>
+			            </div>
+						<div class="form-group">
+			  					<label for="details">Details:</label>
+			  					<textarea class="form-control" rows="5" id="details" name="details"></textarea>
+						</div>
+		          </form>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-primary save">Save changes</button>
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+	
+	
+	
+	 <div class="modal" tabindex="-1" role="dialog" id="copier">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title">Copy &quot;<span class="title"></span>&quot;</h4>
+          </div>
+	      <div class="modal-body">
+			      <form>
+			            <input type="hidden" name="id" />
+						<div class="form-group">
+			                <label for="datetimepicker">DueDate:</label>
+			                <div class='input-group date datetimepicker'>
+			                    <input type='text' class="form-control" name="date" />
+			                    <span class="input-group-addon">
+			                        <span class="glyphicon glyphicon-calendar"></span>
+			                    </span>
+			                </div>
+			            </div>
+			            <div class="form-group">
+						  <label for="target">Select list:</label>
+						  <select class="form-control" id="target" name="target">
+						    <option>archiv</option>
+						    <option>trash</option>
+						    <option>todo</option>
+						  </select>
+						</div>
+			            
+			            
+		          </form>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-primary copy">Copy</button>
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	
