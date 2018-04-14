@@ -1,4 +1,4 @@
-# list.xyz
+# list.frittenburger.de
 Simple List (e.g. for managing todos)
 
 ```
