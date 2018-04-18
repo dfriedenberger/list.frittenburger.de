@@ -3,15 +3,26 @@
 
   <script id="task-template" type="text/x-handlebars-template">
 	 <li class="list-group-item clearfix" id="{{id}}"> 
-	     <p class="lead">{{title}}</p>
+        <div class="clearfix"><strong>
+	     <p class="pull-left">{{title}}<p>
+       {{#if details}}
+		 <span class="pull-right">
+       {{/if}}
+	       <span class="toggledetails glyphicon glyphicon-menu-down"></span>
+         </span>
+         </strong>
+         </div>
+		 <div class="details" style="display: none">{{{details}}}</div>
 	     <div>
 		   <span class="pull-left">
+			<small>
   		    {{#if duedate.expired}}
-				<span class="glyphicon glyphicon-alert text-danger"></span> 
+				<span class="glyphicon glyphicon-bell text-danger"></span> 
 			{{else}}
 				<span class="glyphicon glyphicon-time"></span> 
 			{{/if}}
 	        <span>{{duedate.str}}</span>
+			</small>
            </span>
 	       <span class="pull-right">
   				{{#if config.commandEdit}}
@@ -19,6 +30,9 @@
 	            {{/if}}
   				{{#if config.commandCopy}}
 	              <button class="btn btn-default btn-xs" data-command="copy"><span class="glyphicon glyphicon-duplicate"></span></button>
+	            {{/if}}
+                {{#if config.targetResubmission}}
+				  <button class="btn btn-success btn-xs" data-target="resubmission"><span class="glyphicon glyphicon-repeat"></span></button>
 	            {{/if}}
  				{{#if config.targetArchiv}}
 				  <button class="btn btn-success btn-xs" data-target="archiv"><span class="glyphicon glyphicon-ok"></span></button>
@@ -33,8 +47,8 @@
 
 
 	    <div class="row">
-	      <div id="jumbotron" class="col-md-offset-3 col-md-6">
-	        <img src="whatsapp-interface-1660652_1280.png" class="img-responsive img-center"/>
+	      <div id="jumbotron" class="col-md-offset-2 col-md-8">
+	        <img src="list.png" class="img-responsive img-center"/>
 	      </div>
 	    </div>
 	  

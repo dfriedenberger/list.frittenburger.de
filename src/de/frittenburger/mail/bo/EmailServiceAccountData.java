@@ -1,27 +1,25 @@
 package de.frittenburger.mail.bo;
 /*
- *  Copyright notice
+ * Copyright (c) 2018 Dirk Friedenberger <projekte@frittenburger.de>
+ * 
+ * This file is part of list.frittenburger.de project.
  *
- *  (c) 2016 Dirk Friedenberger <projekte@frittenburger.de>
+ * list.frittenburger.de is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *  All rights reserved
+ * list.frittenburger.de is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
  *
- *  This script is part of the Email2PDFA project. The Email2PDFA is
- *  free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 3 of the License, or
- *  (at your option) any later version.
- *
- *  The GNU General Public License can be found at
- *  http://www.gnu.org/copyleft/gpl.html.
- *
- *  This script is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  This copyright notice MUST APPEAR in all copies of the script!
+ * You should have received a copy of the GNU General Public License
+ * along with MP3-Album-Art.  If not, see <http://www.gnu.org/licenses/>.
+ * 
  */
+
+import java.util.Set;
 
 public class EmailServiceAccountData {
 
@@ -29,6 +27,7 @@ public class EmailServiceAccountData {
 	private String mailserver;
 	private String username;
 	private String password;
+	private Set<String> folders;
 	
 	public String getProvider() {
 		return provider;
@@ -54,5 +53,12 @@ public class EmailServiceAccountData {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	public Set<String> getFolders() {
+		return folders;
+	}
+	public void setFolders(Set<String> folders) {
+		this.folders = folders;
+	}
+	
 
 }

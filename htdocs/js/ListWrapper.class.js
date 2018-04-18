@@ -35,20 +35,23 @@ var ListWrapper = function(id) {
 	this.contextConfig  = {
 		commandEdit  : true,
 		commandCopy  : true,
-		targetArchiv : this.name != "archiv",
-		targetTrash  : this.name != "trash"
+		targetResubmission : this.name != "resubmission",
+		targetArchiv       : this.name != "archiv",
+		targetTrash        : this.name != "trash"
 	};
 	
 	
 	if(this.name == "trash")
 	{
 		this.contextConfig.commandEdit = false;
+		this.contextConfig.targetResubmission = false;
 		this.contextConfig.targetArchiv = false;
 		this.contextConfig.targetTrash = false;
 	}
 	
 	if(this.name == "archiv")
 	{
+		this.contextConfig.targetResubmission = false;
 		this.contextConfig.commandEdit = false;
 		this.contextConfig.targetArchiv = false;
 	}
@@ -69,6 +72,7 @@ ListWrapper.prototype._Create = function(task,movecallback) {
 		id : task.id,
 		title : task.title,
 		duedate : datestr(task.duedate),
+		details : task.details,
 		config : this.contextConfig
 	};
 	
@@ -109,6 +113,13 @@ ListWrapper.prototype._Create = function(task,movecallback) {
 		movecallback(currentList,task.id,target);
 		
 	});
+	
+	obj.find(".toggledetails").click(function(ev) {
+		ev.preventDefault();
+		obj.find(".details").slideToggle();
+		obj.find(".toggledetails").toggleClass("glyphicon-menu-down glyphicon-menu-up");
+	});
+	
 	
 	return obj;
 	
