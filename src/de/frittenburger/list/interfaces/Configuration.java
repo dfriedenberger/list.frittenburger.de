@@ -23,5 +23,7 @@ public interface Configuration {
 	public final static String mailPath = "data/mail";
 	public final static String userPath = "data/user";
 	public static final String secret = "data/mail/secret.txt"; 
+	public final static String smtpParameterFilePath = "data/global/smtp.json";
+	public final static String smtpSenderFilePath = "data/global/sender.json";
 
 }

@@ -1,0 +1,7 @@
+{
+  "useSSL" : false,
+  "host" : "localhost",
+  "authenticate" : false,
+  "username" : null,
+  "password" : null
+}

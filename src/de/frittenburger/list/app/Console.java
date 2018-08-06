@@ -19,9 +19,9 @@ package de.frittenburger.list.app;
  * 
  */
 
-import de.frittenburger.list.crypt.DataProtector;
-import de.frittenburger.list.crypt.FileSecretProvider;
-import de.frittenburger.list.crypt.HashCalculator;
+import de.frittenburger.crypt.DataProtector;
+import de.frittenburger.crypt.FileSecretProvider;
+import de.frittenburger.crypt.HashCalculator;
 import de.frittenburger.list.interfaces.Configuration;
 
 public class Console {

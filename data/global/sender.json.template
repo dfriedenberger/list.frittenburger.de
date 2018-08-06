@@ -1,0 +1,9 @@
+{
+  "from" : "noreply@example.org",
+  "sign" : false,
+  "keystore" : null,
+  "keystorePassword" : null,
+  "privkeyPasswort" : null,
+  "privkeyAlias" : null,
+  "certAlias" : null
+}

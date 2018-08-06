@@ -128,7 +128,6 @@ public class ListServlet extends BaseServlet {
 		}
 		else if("update".equals(function))
 		{
-			System.out.println(request.getParameterMap());
 			
 			String listid = request.getParameter("list");
 			String taskId = request.getParameter("id");

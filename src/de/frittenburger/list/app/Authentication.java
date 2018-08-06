@@ -24,8 +24,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import de.frittenburger.crypt.HashCalculator;
 import de.frittenburger.list.bo.UserData;
-import de.frittenburger.list.crypt.HashCalculator;
 import de.frittenburger.list.impl.UserManagerImpl;
 import de.frittenburger.list.interfaces.UserManager;
 
@@ -34,11 +34,31 @@ import de.frittenburger.list.interfaces.UserManager;
 
 public class Authentication  {
 
+	private class UserSession {
+		
+		private String userId;
+		private boolean remember;
+		public String getUserId() {
+			return userId;
+		}
+		public void setUserId(String userId) {
+			this.userId = userId;
+		}
+		public boolean isRemember() {
+			return remember;
+		}
+		public void setRemember(boolean remember) {
+			this.remember = remember;
+		}
+
+		
+	}
+	
 	private static final long ONEHOUR = 1000 * 60 * 60;
 	private final static HashCalculator hashCalculator = new HashCalculator();
-	private final Map<String,String> sessions = new HashMap<String, String>();
+	private final Map<String,UserSession> sessions = new HashMap<String, UserSession>();
 	
-	public void authenticate(String sessionId, String username, String password) throws IOException {
+	public void authenticate(String sessionId, String username, String password, boolean remember) throws IOException {
 	
 		UserManager userManager = UserManagerImpl.getInstance();
 		
@@ -59,18 +79,28 @@ public class Authentication  {
 		if (!hash.equals(config.getPasswordHash()))
 			throw new IOException("PasswordRequired");
 		
-		sessions.put(sessionId, config.getUserId()); //directory
+		
+		UserSession usersession = new UserSession();
+		usersession.setUserId(config.getUserId());
+		usersession.setRemember(remember);
+		
+		sessions.put(sessionId, usersession); //directory
 	}
 
 	public String authenticated(String sessionId, long last) {
 		
 		if(!sessions.containsKey(sessionId)) return null;
-		if( (last + ONEHOUR) <= new Date().getTime()) //zu lang her
-			return null;
-			
+		
+		UserSession us = sessions.get(sessionId);
+		
+		if(!us.isRemember())
+		{
+			if( (last + ONEHOUR) <= new Date().getTime()) //zu lang her
+				return null;
+		}
 		//weitere Pruefungen
 		
-		return sessions.get(sessionId);
+		return us.getUserId();
 	}
 	
 	public void remove(String sessionId) {
@@ -87,6 +117,11 @@ public class Authentication  {
 		}
 		
 		return authentication;
+	}
+
+	public String create(String username, String password) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	

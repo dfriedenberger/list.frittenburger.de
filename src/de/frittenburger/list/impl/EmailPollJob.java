@@ -32,9 +32,9 @@ import java.util.UUID;
 import org.jsoup.Jsoup;
 import org.jsoup.safety.Whitelist;
 
+import de.frittenburger.crypt.DataProtector;
+import de.frittenburger.crypt.FileSecretProvider;
 import de.frittenburger.list.bo.UserData;
-import de.frittenburger.list.crypt.DataProtector;
-import de.frittenburger.list.crypt.FileSecretProvider;
 import de.frittenburger.list.interfaces.Configuration;
 import de.frittenburger.list.interfaces.Constants;
 import de.frittenburger.list.interfaces.Job;

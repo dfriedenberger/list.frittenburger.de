@@ -1,4 +1,4 @@
-package de.frittenburger.list.crypt;
+package de.frittenburger.crypt;
 /*
  * Copyright (c) 2018 Dirk Friedenberger <projekte@frittenburger.de>
  * 
